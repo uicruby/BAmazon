@@ -118,7 +118,25 @@ function addToInventory(){
     });
   }
   function addNewProduct(){
-    
+    console.log('>>>>>>Adding New Product<<<<<<');
+  var deptNames = [];
+
+  //grab name of departments
+  connection.query('SELECT * FROM Departments', function(err, res){
+    if(err) throw err;
+    for(var i = 0; i<res.length; i++){
+      deptNames.push(res[i].DepartmentName);
+    }
+  })
+  inquirer
+  .prompt([
+    {
+      type:"input",
+      name: "product",
+      message:"what product would you like to add",
+      name:"productName"
+    }
+  ])
   }
 
 // start();
